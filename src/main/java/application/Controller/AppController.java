@@ -1,9 +1,9 @@
-package application.controller;
+package application.Controller;
 
 import application.CRUD.CocheCRUD;
-import application.domain.Coche;
-import application.domain.Tipo;
-import application.utils.AlertUtils;
+import application.Domain.Coche;
+import application.Domain.Tipo;
+import application.Utils.AlertUtils;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,9 +1,23 @@
-package application.domain;
+package application.Domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Coche")
 public class Coche {
+    
+    @Column(name = "matricula")
     private String matricula;
+
+    @Column(name = "marca")
     private String marca;
+
+    @Column(name = "modelo")
     private String modelo;
+
+    @Column(name = "tipo")
     private String tipo;
 
     public Coche(String matricula, String marca, String modelo, String tipo) {

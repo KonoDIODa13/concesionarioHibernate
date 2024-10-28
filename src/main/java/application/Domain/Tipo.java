@@ -1,4 +1,4 @@
-package application.domain;
+package application.Domain;
 
 // Enum para los tipo de coche que están en el combox.
 public enum Tipo {

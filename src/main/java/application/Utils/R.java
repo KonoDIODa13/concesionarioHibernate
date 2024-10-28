@@ -1,4 +1,4 @@
-package application.utils;
+package application.Utils;
 
 import java.io.File;
 import java.io.InputStream;

@@ -2,8 +2,8 @@ package application.CRUD;
 
 
 import application.DAO.CocheDAO;
-import application.domain.Coche;
-import application.utils.AlertUtils;
+import application.Domain.Coche;
+import application.Utils.AlertUtils;
 
 import java.util.List;
 
@@ -74,7 +74,7 @@ public class CocheCRUD {
             AlertUtils.mostrarError("No se puede realizar la modificación porque la matrícula " + nuevoCoche.getMatricula() + " ya existe en bd.");
             return false;
         }
-        dao.modificarCoche(nuevoCoche, antiguoCoche);
+        dao.modificarCoche(nuevoCoche);
         return true;
     }
 

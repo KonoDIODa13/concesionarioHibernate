@@ -1,6 +1,6 @@
 package application.concesionario_hibernate;
 
-import application.utils.R;
+import application.Utils.R;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
