@@ -15,7 +15,6 @@ public class CocheCRUD {
     public CocheCRUD() {
         // Al crear el CocheCrud, instancio el CocheDao para realizarlo solo una vez y realizar la conexión a la bd
         dao = new CocheDAO();
-        dao.conectarBD();
     }
 
     public void salir() {
@@ -55,26 +54,18 @@ public class CocheCRUD {
         return true;
     }
 
-    public boolean modificarCoche(List<String> campos, Coche antiguoCoche) {
+    public boolean modificarCoche(List<String> campos) {
         /*
         Este metodo, al igual que el de insertar coche, compruebo los campos que voy a meter y si el coche que voy a
         meter esta ya en la bd. Realizao una comprobación si existe un coche con la matrícula que se intenta modificar
         salvando la del propio vehiculo que queremos modificar. Por último, llamamos al la función modificarCoche.
          */
         if (comprobaciones(campos)) return false;
-
-        Coche nuevoCoche = new Coche(campos.get(0), campos.get(1), campos.get(2), campos.get(3));
-        if (coches.contains(nuevoCoche)) {
-            AlertUtils.mostrarError("No se puede realizar la modificación porque ya existe un coche con esos datos en la bd.");
-            return false;
-        }
-
-        if (coches.stream().anyMatch(car -> car.getMatricula().equalsIgnoreCase(nuevoCoche.getMatricula())
-                && !(car.getMatricula().equalsIgnoreCase(antiguoCoche.getMatricula())))) {
-            AlertUtils.mostrarError("No se puede realizar la modificación porque la matrícula " + nuevoCoche.getMatricula() + " ya existe en bd.");
-            return false;
-        }
-        dao.modificarCoche(nuevoCoche);
+        Coche coche = dao.buscarCoche(campos.get(0));
+        coche.setMarca(campos.get(1));
+        coche.setModelo(campos.get(2));
+        coche.setTipo(campos.get(3));
+        dao.modificarCoche(coche);
         return true;
     }
 

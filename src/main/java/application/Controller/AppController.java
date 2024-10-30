@@ -117,7 +117,7 @@ public class AppController implements Initializable {
             insertarCampo(campos, modelo);
             insertarCampo(campos, tipo);
 
-            if (crud.modificarCoche(campos, cocheSeleccionado)) {
+            if (crud.modificarCoche(campos)) {
                 AlertUtils.mostrarConfirmacion("Coche modificado correctamente.");
                 limpiarCampos(event);
                 cargarTabla();
@@ -180,6 +180,7 @@ public class AppController implements Initializable {
         coches = crud.getCoches();
 
         tvCoches.setItems(FXCollections.observableList(coches));
+        tfMatricula.setEditable(true);
     }
 
     public void cargarCB() {
@@ -201,6 +202,7 @@ public class AppController implements Initializable {
             }
         }
         cbTipo.setValue(tipoCoche);
+        tfMatricula.setEditable(false);
     }
 
     public void insertarCampo(List<String> campos, String campo) {

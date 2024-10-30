@@ -18,4 +18,8 @@ public class R {
         return Thread.currentThread().getContextClassLoader().getResource("ui" + File.separator + name);
     }
 
+    public static URL getCfg(String name) {
+        return Thread.currentThread().getContextClassLoader().getResource("hibernateConf" + File.separator + name);
+    }
+
 }

@@ -10,7 +10,7 @@ public class HibernateUtil {
 
     static {
         Configuration cfg = new Configuration();
-        cfg.configure("hibernate.cfg.xml");
+        cfg.configure(R.getCfg("hibernate.cfg.xml"));
         cfg.addAnnotatedClass(Coche.class);
         factory = cfg.buildSessionFactory();
     }
