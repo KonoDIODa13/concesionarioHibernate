@@ -2,7 +2,7 @@ package application.CRUD;
 
 
 import application.DAO.CocheDAO;
-import application.Domain.Coche;
+import application.Model.Coche;
 import application.Utils.AlertUtils;
 
 import java.util.List;
@@ -56,11 +56,12 @@ public class CocheCRUD {
 
     public boolean modificarCoche(List<String> campos) {
         /*
-        Este metodo, al igual que el de insertar coche, compruebo los campos que voy a meter y si el coche que voy a
-        meter esta ya en la bd. Realizao una comprobación si existe un coche con la matrícula que se intenta modificar
-        salvando la del propio vehiculo que queremos modificar. Por último, llamamos al la función modificarCoche.
+        Este metodo, al igual que el de insertar coche, compruebo los campos que voy a meter.
+        Por último, llamamos al la función modificarCoche.
          */
         if (comprobaciones(campos)) return false;
+        // de esta forma, podria comprobar si existe un coche con esa matricula sin tener que realizar una sentencia sql
+        //Coche coche = coches.stream().filter(coche1 -> coche1.getMatricula().equalsIgnoreCase(campos.get(0))).findFirst().orElse(null);
         Coche coche = dao.buscarCoche(campos.get(0));
         coche.setMarca(campos.get(1));
         coche.setModelo(campos.get(2));

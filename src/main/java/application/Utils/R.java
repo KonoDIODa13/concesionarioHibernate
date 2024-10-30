@@ -18,8 +18,9 @@ public class R {
         return Thread.currentThread().getContextClassLoader().getResource("ui" + File.separator + name);
     }
 
+    // He creado un metodo igualito que el de getUI para coger el recurso de hibernate.cfg
     public static URL getCfg(String name) {
-        return Thread.currentThread().getContextClassLoader().getResource("hibernateConf" + File.separator + name);
+        return Thread.currentThread().getContextClassLoader().getResource("configuration" + File.separator + name);
     }
 
 }

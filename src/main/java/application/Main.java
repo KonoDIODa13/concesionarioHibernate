@@ -1,4 +1,4 @@
-package application.concesionario_hibernate;
+package application;
 
 import application.Utils.R;
 import javafx.application.Application;

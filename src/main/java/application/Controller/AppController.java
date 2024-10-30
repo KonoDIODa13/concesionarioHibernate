@@ -1,8 +1,8 @@
 package application.Controller;
 
 import application.CRUD.CocheCRUD;
-import application.Domain.Coche;
-import application.Domain.Tipo;
+import application.Model.Coche;
+import application.Model.Tipo;
 import application.Utils.AlertUtils;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
@@ -64,6 +65,9 @@ public class AppController implements Initializable {
         tfModelo.setText("");
         cargarCB();
         cocheSeleccionado = null;
+        tfMatricula.setEditable(true);
+        tfMatricula.setDisable(false);
+
     }
 
     @FXML
@@ -166,7 +170,7 @@ public class AppController implements Initializable {
                 "¿Está seguro de que desea salir?", "Confirmación", JOptionPane.YES_NO_OPTION);
         if (opcion == JOptionPane.YES_OPTION) {
             crud.salir();
-            System.exit(0);
+            ((Stage) tfMatricula.getScene().getWindow()).close();
         }
     }
 
@@ -180,7 +184,6 @@ public class AppController implements Initializable {
         coches = crud.getCoches();
 
         tvCoches.setItems(FXCollections.observableList(coches));
-        tfMatricula.setEditable(true);
     }
 
     public void cargarCB() {
@@ -203,6 +206,7 @@ public class AppController implements Initializable {
         }
         cbTipo.setValue(tipoCoche);
         tfMatricula.setEditable(false);
+        tfMatricula.setDisable(true);
     }
 
     public void insertarCampo(List<String> campos, String campo) {
